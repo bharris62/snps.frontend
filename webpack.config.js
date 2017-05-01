@@ -25,6 +25,13 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.css$/,
+        use: [
+          { loader: "vue-style-loader" },
+          { loader: "css-loader" }
+        ]
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -40,7 +47,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    port: 4200
   },
   performance: {
     hints: false

@@ -1,5 +1,5 @@
 {
-  "name": "snips.frontend",
+  "name": "Snips",
   "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "Blake Harris",
@@ -9,12 +9,18 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "vue": "^2.2.1"
+    "axios": "^0.16.1",
+    "bootstrap-vue": "^0.15.0",
+    "bulma": "^0.4.1",
+    "vue": "^2.2.1",
+    "vue-style-loader": "^3.0.1",
+    "vueboot": "^0.4.5"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-preset-latest": "^6.0.0",
+    "bulma": "^0.4.1",
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
