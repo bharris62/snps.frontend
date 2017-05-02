@@ -1,26 +1,13 @@
 <template>
     <div>
         <app-nav-bar></app-nav-bar>
-    <md-card>
-        <md-card-actions v-md-ink-ripple>
-            <div class="md-subhead">
-                <span>mode: {{ editorOption.mode }}</span>
-                <span>&nbsp;&nbsp;&nbsp;</span>
-                <span>theme: {{ editorOption.theme }}</span>
-            </div>
-            <md-button class="md-icon-button"
-                       target="_blank"
-                       href="https://github.com/surmon-china/vue-codemirror/tree/master/examples/09-text-x-go.vue">
-                <md-icon>code</md-icon>
-            </md-button>
-        </md-card-actions>
-        <md-card-media>
+
+        <div class="column is-two-thirds box">
             <div class="codemirror">
                 <!-- codemirror -->
                 <codemirror v-model="code" :options="editorOption"></codemirror>
             </div>
-        </md-card-media>
-    </md-card>
+        </div>
     </div>
 </template>
 
@@ -40,7 +27,8 @@
                     lineNumbers: true,
                     line: true,
                     mode: 'text/x-go',
-                    theme: 'mbo'
+                    theme: 'mbo',
+                    fullscreen: true
                 }
             }
         }
