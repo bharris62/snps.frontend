@@ -4,7 +4,9 @@ import App from './App.vue';
 import 'bulma/css/bulma.css';
 import Snippet from './components/Snippet.vue'
 import Home from './components/Home.vue'
+import CodeMirror from 'vue-codemirror'
 
+Vue.use(CodeMirror);
 Vue.use(VueRouter);
 
 const routes = [

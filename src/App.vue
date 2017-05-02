@@ -6,9 +6,10 @@
 
 <script>
 import Home from './components/Home.vue';
+import Snippet from './components/Snippet.vue'
 export default {
   components: {
-    appHome: Home
+      appHome: Home
   }
 }
 </script>
