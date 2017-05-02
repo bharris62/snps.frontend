@@ -11,7 +11,8 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/snip/:id', component: Snippet },
-    { path: '/', component: Home }
+    { path: '/', component: Home },
+    { path: '/create', component: Snippet}
 ];
 
 const router = new VueRouter({
