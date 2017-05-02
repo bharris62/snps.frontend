@@ -5,7 +5,7 @@
       <a class="nav-item">
         <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
       </a>
-      <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile is-active">Create</a>
       <a class="nav-item is-tab is-hidden-mobile">Features</a>
       <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
       <a class="nav-item is-tab is-hidden-mobile">About</a>

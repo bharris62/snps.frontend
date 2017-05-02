@@ -18,6 +18,10 @@
 
 <script>
     import axios from 'axios';
+    import config from '../config';
+
+    const {apiHost} = config;
+
     export default {
         data() {
             return {
@@ -25,7 +29,7 @@
             }
         },
         created() {
-                axios.get(`http://localhost:8080/snip`)
+                axios.get(`${apiHost}/snip`)
                     .then(response => {
                         var column = [];
                         var data = response.data;

@@ -53,6 +53,9 @@
 <script>
     import Nav from './Navbar.vue';
     import axios from 'axios';
+    import config from '../config';
+
+    const {apiHost} = config;
     export default {
         components: {
             appNavBar: Nav
@@ -77,7 +80,7 @@
         },
         methods: {
             createSnip(){
-                axios.post('http://localhost:8080/snip', {
+                axios.post('${apiHost}/snip', {
                     code: this.code,
                     title: this.title,
                     description: this.description,
