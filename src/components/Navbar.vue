@@ -3,7 +3,7 @@
   <div class="container">
     <div class="nav-left">
       <a class="nav-item">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+        <img src="https://s7.postimg.org/9lhforqbf/logo.png" style="height: 100px; width: 100px; " alt="Bulma logo">
       </a>
       <a class="nav-item is-tab is-hidden-mobile is-active">Create</a>
       <a class="nav-item is-tab is-hidden-mobile">Features</a>

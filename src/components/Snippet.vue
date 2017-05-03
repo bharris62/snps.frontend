@@ -80,7 +80,7 @@
         },
         methods: {
             createSnip(){
-                axios.post('${apiHost}/snip', {
+                axios.post(config.apiHost + '/snip', {
                     code: this.code,
                     title: this.title,
                     description: this.description,

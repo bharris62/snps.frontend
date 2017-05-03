@@ -29,7 +29,7 @@
             }
         },
         created() {
-                axios.get(`${apiHost}/snip`)
+                axios.get(config.apiHost + `/snip`)
                     .then(response => {
                         var column = [];
                         var data = response.data;
