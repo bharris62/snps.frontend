@@ -2,14 +2,24 @@
     <div>
         <div class="columns" v-for="column in columns">
             <div class="column is-one-quarter" v-for="item in column">
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-info">
-                        <p class="title">{{item.title}}</p>
-                        <p class="subtitle">With an image</p>
+                <div class="card">
+                    <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="http://bulma.io/images/placeholders/640x480.png">
+                            <iframe scrolling="no" :src="item.url" alt="Image"></iframe>
                         </figure>
-                    </article>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">{{item.title}}</p>
+                                <p class="subtitle is-6">{{item.language}}</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            {{item.description}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,8 +45,9 @@
                         var data = response.data;
 
                         data.forEach(item => {
+                            item.url = 'http://localhost:4200/snip/' + item.id;
                             column.push(item);
-
+                            console.log(item);
                             if(column.length >= 4) {
                                 this.columns.push(column);
                                 column = [];
@@ -45,7 +56,7 @@
                         if(column.length > 0) {
                             this.columns.push(column);
                         }
-                        console.log(data)
+
                     })
                     .catch(e => {
 
@@ -54,3 +65,13 @@
 
     }
 </script>
+<style>
+    iframe{
+        overflow: scroll;
+        height: 220px;
+        wideth: 960px;
+    }
+    .image.is-4by3 {
+        padding-top: 0 !important;
+    }
+</style>

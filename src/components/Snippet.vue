@@ -1,6 +1,10 @@
 <template>
     <div>
         <app-nav-bar></app-nav-bar>
+        <div v-if="submitted" class="notification is-success">
+            <button @click="uncheck()"class="delete"></button>
+            You successfully loaded a snippet!
+          </div>
         <div class="columns">
         <div class="column is-two-thirds box">
             <div class="codemirror">
@@ -22,8 +26,12 @@
             <span class="select">
               <select v-model="language">
                     <option>Select dropdown</option>
-                    <option>With options</option>
+                    <option>Java</option>
                     <option>Python</option>
+                    <option>C++</option>
+                    <option>Scala</option>
+                    <option>HTML</option>
+
               </select>
             </span>
                 </p>
@@ -43,6 +51,7 @@
                 <p class="control">
                     <button class="button is-link">Cancel</button>
                 </p>
+
             </div>
         </div>
         </div>
@@ -67,6 +76,7 @@
                 title : "",
                 description: "",
                 language: "",
+                submitted: false,
                 editorOption: {
                     tabSize: 4,
                     styleActiveLine: true,
@@ -87,17 +97,21 @@
                     language: this.language
 
                 })
-                    .then(function (response) {
+                    .then((response) => {
                         console.log(response);
                         this.title = "";
                         this.description = "";
                         this.language =  "";
                         this.code = "";
+                        this.submitted = true;
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
-                }
+                },
+            uncheck(){
+                this.submitted=false;
+            }
         }
     }
 </script>

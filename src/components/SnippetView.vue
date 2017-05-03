@@ -13,35 +13,26 @@
                     <div class="field">
                         <label class="label">Title</label>
                         <p class="control">
-                            <input class="input" v-model="title" type="" placeholder="Title Your Snippet">
+                            <input class="input" v-model="title" type=""  :placeholder="title">
                         </p>
                     </div>
                     <div class="field">
                         <label class="label">Language</label>
                         <p class="control">
-            <span class="select">
-              <select v-model="language">
-                    <option>Select dropdown</option>
-                    <option>With options</option>
-                    <option>Python</option>
-              </select>
-            </span>
+                    <span class="select">
+                      <select v-model="language">
+                            <option>{{language}}</option>
+                            <option>With options</option>
+                            <option>Python</option>
+                      </select>
+                    </span>
                         </p>
                     </div>
 
                     <div class="field">
                         <label class="label">Description</label>
                         <p class="control">
-                            <textarea class="textarea" v-model="description" placeholder="Give some detail on your snippet"></textarea>
-                        </p>
-                    </div>
-
-                    <div class="field is-grouped">
-                        <p class="control">
-                            <button @click="createSnip()" class="button is-primary">Submit</button>
-                        </p>
-                        <p class="control">
-                            <button class="button is-link">Cancel</button>
+                            <textarea class="textarea" v-model="description" :placeholder="description"></textarea>
                         </p>
                     </div>
                 </div>
@@ -63,7 +54,7 @@
         data() {
             const code = '// Add your code here...';
             return {
-                code,
+                code: code,
                 title: "",
                 description: "",
                 language: "",
@@ -78,18 +69,24 @@
                 }
             }
         },
-        methods: {
-            created() {
-                axios.get(config.apiHost + `/snip/` + this.$route.params.id)
-                    .then(response => {
-                        console.log(response.data)
-            })
-                    .catch(e => {
+        created() {
+            console.log(this.$route.params.id);
+            axios.get(config.apiHost + `/snip/` + this.$route.params.id)
+                .then(response => {
+                    console.log(response.data);
+                    var data = response.data;
+                    console.log(data)
+                    this.title = data.title;
+                    this.code = data.code;
+                    this.description = data.description;
+                    this.language = data.language;
+        })
+                .catch(e => {
 
-                    })
-            }
+                })
         }
     }
+
 </script>
 
 <style>
