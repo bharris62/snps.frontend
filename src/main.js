@@ -6,6 +6,8 @@ import Snippet from './components/Snippet.vue'
 import Home from './components/Home.vue'
 import CodeMirror from 'vue-codemirror'
 import SnippetView from './components/SnippetView.vue'
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
 
 Vue.use(CodeMirror);
 Vue.use(VueRouter);
@@ -13,7 +15,9 @@ Vue.use(VueRouter);
 const routes = [
     { path: '/snip/:id', component: SnippetView },
     { path: '/', component: Home },
-    { path: '/create', component: Snippet}
+    { path: '/create', component: Snippet},
+    {path: '/login', component: Login},
+    {path: '/register', component: Register}
 ];
 
 const router = new VueRouter({
@@ -22,7 +26,7 @@ const router = new VueRouter({
 });
 
 new Vue({
-  el: '#app',
-   router,
-  render: h => h(App)
-})
+    el: '#app',
+    router,
+    render: h => h(App)
+});

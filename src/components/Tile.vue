@@ -1,27 +1,49 @@
 <template>
     <div>
-        <div class="columns" v-for="column in columns">
-            <div class="column is-one-quarter" v-for="item in column">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <iframe scrolling="no" :src="item.url" alt="Image"></iframe>
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-content">
-                                <p class="title is-4">{{item.title}}</p>
-                                <p class="subtitle is-6">{{item.language}}</p>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            {{item.description}}
-                        </div>
-                    </div>
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title has-text-centered">
+                        SNPS.CO
+                      </h1>
+                    <h2 class="subtitle has-text-centered">
+                        Create. Organize. Share
+                      </h2>
                 </div>
             </div>
+        </section>
+        <div>
+            <div class="columns">
+                <div class="content is-medium">
+                    <h3 class="has-text-centered">Java</h3>
+                </div>
+                <div class="content is-medium has-text-centered">
+                    <h3 class="has-text-centered">Python</h3>
+                </div>
+                <div class="content is-medium">
+                    <h3 class="has-text-centered">JavaScript</h3>
+                </div>
+                <div class="content is-medium bigger">
+                    <h3 class="has-text-centered">Quick Snip</h3>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="columns">
+                <div class="content is-medium">
+                    <h3 class="has-text-centered">Ruby</h3>
+                </div>
+                <div class="content is-medium">
+                    <h3 class="has-text-centered">Scala</h3>
+                </div>
+                <div class="content is-medium">
+                    <h3 class="has-text-centered">Fortran</h3>
+                </div>
+                <div class="content is-medium bigger">
+                    <h3 class="has-text-centered">Your Recent</h3>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -39,39 +61,43 @@
             }
         },
         created() {
-                axios.get(config.apiHost + `/snip`)
-                    .then(response => {
-                        var column = [];
-                        var data = response.data;
+            axios.get(config.apiHost + `/snip`)
+                .then(response => {
+                    var column = [];
+                    var data = response.data;
 
-                        data.forEach(item => {
-                            item.url = 'http://localhost:4200/snip/' + item.id;
-                            column.push(item);
-                            console.log(item);
-                            if(column.length >= 4) {
-                                this.columns.push(column);
-                                column = [];
-                            }
-                        });
-                        if(column.length > 0) {
+                    data.forEach(item => {
+                        item.url = 'http://localhost:4200/snip/' + item.id;
+                        column.push(item);
+                        console.log(item);
+                        if (column.length >= 4) {
                             this.columns.push(column);
+                            column = [];
                         }
+                    });
+                    if (column.length <= 4) {
+                        this.columns.push(column);
+                    }
+                })
+                .catch(e => {
 
-                    })
-                    .catch(e => {
-
-                    })
-            }
-
+                })
+        }
     }
 </script>
 <style>
-    iframe{
-        overflow: scroll;
-        height: 220px;
-        wideth: 960px;
+    .content {
+        width: 260px;
+        height: 260px;
     }
-    .image.is-4by3 {
-        padding-top: 0 !important;
+
+    h3 {
+        color: white;
+    }
+
+    .bigger {
+        width: 500px;
+        height: 260px;
+        background-color: yellow;
     }
 </style>

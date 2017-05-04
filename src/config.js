@@ -1,6 +1,3 @@
-/**
- * Created by BHarris on 5/2/17.
- */
 const ENV = {
     apiHost: 'http://localhost:8080'
 };

@@ -1,6 +1,5 @@
 <template>
     <div id="component">
-        <app-nav-bar></app-nav-bar>
         <app-tile></app-tile>
     </div>
 </template>
@@ -9,6 +8,11 @@ import Nav from './Navbar.vue';
 import Tile from './Tile.vue';
 
 export default {
+    data() {
+        return{
+            loading: false
+        }
+    },
   components: {
     appNavBar: Nav,
     appTile: Tile

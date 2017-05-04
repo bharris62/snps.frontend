@@ -1,6 +1,5 @@
 <template>
     <div>
-        <app-nav-bar></app-nav-bar>
         <div v-if="submitted" class="notification is-success">
             <button @click="uncheck()"class="delete"></button>
             You successfully loaded a snippet!
@@ -63,7 +62,9 @@
     import Nav from './Navbar.vue';
     import axios from 'axios';
     import config from '../config';
-
+    var Bearerconfig = {
+        headers: {'Authorization': "Bearer " + localStorage.getItem('token')}
+    };
     const {apiHost} = config;
     export default {
         components: {
@@ -96,7 +97,7 @@
                     description: this.description,
                     language: this.language
 
-                })
+                }, Bearerconfig)
                     .then((response) => {
                         console.log(response);
                         this.title = "";

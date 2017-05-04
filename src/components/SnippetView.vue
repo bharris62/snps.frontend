@@ -1,6 +1,5 @@
 <template>
     <div>
-        <app-nav-bar></app-nav-bar>
         <div class="columns">
             <div class="column is-two-thirds box">
                 <div class="codemirror">
@@ -70,12 +69,10 @@
             }
         },
         created() {
-            console.log(this.$route.params.id);
             axios.get(config.apiHost + `/snip/` + this.$route.params.id)
                 .then(response => {
-                    console.log(response.data);
                     var data = response.data;
-                    console.log(data)
+                    console.log(data);
                     this.title = data.title;
                     this.code = data.code;
                     this.description = data.description;
