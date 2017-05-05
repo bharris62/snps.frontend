@@ -12,38 +12,19 @@
                 </div>
             </div>
         </section>
-        <div>
-            <div class="columns">
-                <div class="content is-medium">
-                    <h3 class="has-text-centered">Java</h3>
-                </div>
-                <div class="content is-medium has-text-centered">
-                    <h3 class="has-text-centered">Python</h3>
-                </div>
-                <div class="content is-medium">
-                    <h3 class="has-text-centered">JavaScript</h3>
-                </div>
-                <div class="content is-medium bigger">
-                    <h3 class="has-text-centered">Quick Snip</h3>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="columns">
-                <div class="content is-medium">
-                    <h3 class="has-text-centered">Ruby</h3>
-                </div>
-                <div class="content is-medium">
-                    <h3 class="has-text-centered">Scala</h3>
-                </div>
-                <div class="content is-medium">
-                    <h3 class="has-text-centered">Fortran</h3>
-                </div>
-                <div class="content is-medium bigger">
-                    <h3 class="has-text-centered">Your Recent</h3>
-                </div>
-            </div>
 
+        <div class="tile is-ancestor" v-for="column in columns">
+            <div class="tile is-parent" v-for="item in column">
+                <a v-bind:href="item.url">
+                    <article class="tile is-child box is-4 ">
+                        <p class="title">{{item.title}}</p>
+                        <p class="subtitle">{{item.user.username}}</p>
+                        <content>
+                            <h6>{{item.description}}</h6>
+                        </content>
+                    </article>
+                </a>
+            </div>
         </div>
     </div>
 </template>
@@ -69,7 +50,6 @@
                     data.forEach(item => {
                         item.url = 'http://localhost:4200/snip/' + item.id;
                         column.push(item);
-                        console.log(item);
                         if (column.length >= 4) {
                             this.columns.push(column);
                             column = [];
@@ -86,18 +66,55 @@
     }
 </script>
 <style>
-    .content {
-        width: 260px;
-        height: 260px;
+    .box {
+        /*border: 1px solid red;*/
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        /*margin: 0 auto;*/
+        /*max-width: 2000px;*/
     }
-
-    h3 {
-        color: white;
+    .tile {
+        border: 1px solid black;
+        margin: 0 auto;
+        flex-grow: 1;
+        padding: 0;
+        height: 220px;
+        min-width: 250px;
+        /*max-width: 250px;*/
     }
-
-    .bigger {
-        width: 500px;
-        height: 260px;
-        background-color: yellow;
+    @media screen and (max-width: 1140px) {
+        .box {
+            max-width: 850px;
+        }
+    }
+    @media screen and (max-width: 2040px) {
+        .box {
+            max-width: 1750px;
+        }
+    }
+    @media screen and (max-width: 1790px) {
+        .box {
+            max-width: 1500px;
+        }
+    }
+    @media screen and (max-width: 1540px) {
+        .box {
+            max-width: 1250px;
+        }
+    }
+    @media screen and (max-width: 1290px) {
+        .box {
+            max-width: 1000px;
+        }
+    }
+    @media screen and (max-width: 1040px) {
+        .box {
+            max-width: 750px;
+        }
+    }
+    @media screen and (max-width: 790px) {
+        .box {
+            max-width: 500px;
+        }
     }
 </style>

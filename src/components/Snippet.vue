@@ -30,6 +30,11 @@
                     <option>C++</option>
                     <option>Scala</option>
                     <option>HTML</option>
+                    <option>C</option>
+                    <option>C#</option>
+                    <option>React</option>
+                    <option>VueJS</option>
+                    <option>Closure</option>
 
               </select>
             </span>

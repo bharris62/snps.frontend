@@ -46,7 +46,6 @@
             logout() {
                 console.log("Hello!");
                 localStorage.removeItem('token');
-                localStorage.removeItem('username');
                 window.location = '/';
             }
         },
@@ -54,14 +53,19 @@
             var Bearerconfig = {
                 headers: {'Authorization': "Bearer " + localStorage.getItem('token')}
             };
-            axios.get(config.apiHost + `/users/current`, Bearerconfig)
-                .then(response => {
-                    let data = response.data;
-                })
-                .catch(e => {
-                    console.log("Fail ", Bearerconfig)
+            console.log("bearerconfig: " + Bearerconfig)
+            if(Bearerconfig.headers.Authorization != "Bearer null") {
 
-                })
+                console.log(Bearerconfig)
+                axios.get(config.apiHost + `/users/current`, Bearerconfig)
+                    .then(response => {
+                        let data = response.data;
+                    })
+                    .catch(e => {
+
+
+                    })
+            }
         }
     }
 </script>
