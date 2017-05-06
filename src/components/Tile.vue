@@ -66,15 +66,9 @@
     }
 </script>
 <style>
-    .box {
-        /*border: 1px solid red;*/
-        /*display: flex;*/
-        /*flex-wrap: wrap;*/
-        /*margin: 0 auto;*/
-        /*max-width: 2000px;*/
-    }
+
     .tile {
-        border: 1px solid black;
+        /*border: 1px solid black;*/
         margin: 0 auto;
         flex-grow: 1;
         padding: 0;

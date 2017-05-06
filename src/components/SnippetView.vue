@@ -19,19 +19,15 @@
                         <label class="label">Language</label>
                         <p class="control">
                     <span class="select">
-                      <select v-model="language">
-                            <option>{{language}}</option>
-                            <option>With options</option>
-                            <option>Python</option>
-                      </select>
+                     <span class="tag is-primary is-medium">{{language}}</span>
                     </span>
                         </p>
                     </div>
 
-                    <div class="field">
+                    <div class="field is-disabled">
                         <label class="label">Description</label>
                         <p class="control">
-                            <textarea class="textarea" v-model="description" :placeholder="description"></textarea>
+                            <textarea class="textarea is-disabled" v-model="description" :placeholder="description"></textarea>
                         </p>
                     </div>
                 </div>
