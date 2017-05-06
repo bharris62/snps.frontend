@@ -46,6 +46,7 @@
             logout() {
                 console.log("Hello!");
                 localStorage.removeItem('token');
+                localStorage.removeItem('username');
                 window.location = '/';
             }
         },
@@ -60,6 +61,7 @@
                 axios.get(config.apiHost + `/users/current`, Bearerconfig)
                     .then(response => {
                         let data = response.data;
+                        localStorage.setItem("username", data.username);
                     })
                     .catch(e => {
 

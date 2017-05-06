@@ -74,11 +74,12 @@
                     .then((response) => {
                         let data = response.data;
                         localStorage.setItem(data.token);
-
+                        localStorage.setItem(data.username);
                         this.email = "";
                         this.password = "";
                         this.confirmPassword = "";
                         this.name = "";
+
                     })
                     .catch(function (error) {
                         console.log(error);

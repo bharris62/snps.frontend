@@ -66,8 +66,12 @@
                         <br>
                             {{c.comment}}
                         <br>
-                        <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
-                    </p>
+                     </p>
+                <div class="block">
+                    <a class="button is-outlined is-small">Like</a>
+                    <a v-if="c.isOwner" @click="deleteComment(c.id)" :value="c.id" class="button is-danger is-outlined is-small">Delete</a>
+                </div>
+
                 </div>
             </div>
         </article>
@@ -96,6 +100,7 @@
                 language: "",
                 comment: "",
                 comments: [],
+                isOwner: false,
                 editorOption: {
                     tabSize: 4,
                     styleActiveLine: true,
@@ -111,6 +116,18 @@
             addComment() {
                 axios.post(config.apiHost + '/snip/' + this.$route.params.id + '/comment', {
                     comment: this.comment,
+
+                }, Bearerconfig)
+                    .then((response) => {
+                        console.log(response);
+                        this.comment = "";
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            deleteComment(id){
+                axios.delete(config.apiHost + '/snip/'+ '/comment/'  + id , {
 
                 }, Bearerconfig)
                     .then((response) => {
@@ -139,13 +156,17 @@
                         var data = response.data;
 
                         data.forEach(item => {
-                          this.comments.push(item);
+                            item.isOwner = false;
+                            this.comments.push(item);
+
+                          if(localStorage.getItem("username") == item.user.username) {
+                              item.isOwner = true;
+                          }
                         })
                     })
                     .catch(e => {
 
                     })
-            console.log("bottom", this.comments);
             }
     }
 

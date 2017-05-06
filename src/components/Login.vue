@@ -84,9 +84,11 @@
                     password: this.password
                 })
                     .then((response) => {
+                        console.log(response);
                         localStorage.setItem("token", response.data.token);
                         this.email = "";
                         this.password = "";
+                        window.location = '/';
                     })
                     .catch(function (error) {
                         console.log(error);
