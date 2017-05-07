@@ -115,8 +115,8 @@
 
                 }, Bearerconfig)
                     .then((response) => {
-                        console.log(response);
                         this.comment = "";
+                        this.getComments();
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -133,6 +133,20 @@
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            getComments(){
+                axios.get(config.apiHost + `/snip/comment/` + this.$route.params.id)
+                    .then(response => {
+                        var data = response.data;
+                        data.forEach(item => {
+                            item.isOwner = false;
+                            this.comments.push(item);
+
+                            if(localStorage.getItem("username") === item.user.username) {
+                                item.isOwner = true;
+                            }
+                        })
+                    })
             }
         },
         created() {
