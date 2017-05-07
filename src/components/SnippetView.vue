@@ -64,7 +64,7 @@
                         <br>
                      </p>
                 <div class="block">
-                    <a class="button is-outlined is-small">Like</a>
+                    <a class="button is-outlined is-small" @click="likeComment(c.id)">Like</a>
                     <a v-if="c.isOwner" @click="deleteComment(c.id)" :value="c.id" class="button is-danger is-outlined is-small">Delete</a>
                 </div>
 
@@ -97,6 +97,7 @@
                 comment: "",
                 comments: [],
                 isOwner: false,
+                likes: 0,
                 editorOption: {
                     tabSize: 4,
                     styleActiveLine: true,
@@ -147,6 +148,17 @@
                             }
                         })
                     })
+            },
+            likeComment(id){
+                axios.post(config.apiHost + '/snip/comment/rate/' + id, {
+                    rate: "like"
+                }, Bearerconfig)
+                    .then((response) => {
+                        this.likes += 1;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
         },
         created() {
